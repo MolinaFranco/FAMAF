@@ -1,0 +1,30 @@
+DEFINICION DE LA FUNCION:
+
+pegarEn3 :: [(String, String)] -> [(String, String, String)]
+pegarEn3 [] = [] --(1)                                               
+pegarEn3 ((a,b):xs) = (a, b, (a++b)):(pegarEn3 xs) --(2)
+
+
+EVALUACION MANUAL:
+
+≡{planteo}
+_pegarEn3 [("ab", "cd"), ("fg","hi")]_ =
+
+≡{por (2); (a,b):=("ab", "cd"); xs:= [("fg","hi")]}
+("ab", "cd", "ab"++"cd"): _pegarEn3[("fg","hi")]_ = 
+
+≡{por (2); (a,b):=("fg","hi"); xs:= []}
+[("ab", "cd", "ab"++"cd"), ("fg","hi", "fg"++"hi"), _pegarEn3 []_] = 
+
+≡{por (1); []:= []}
+[("ab", "cd", _"ab"++"cd"_), ("fg","hi", _"fg"++"hi"_), []] =
+
+≡{por definicion ++ * 2}
+[("ab", "cd", "abcd"), ("fg","hi", "fghi")] =
+
+
+
+
+
+
+
