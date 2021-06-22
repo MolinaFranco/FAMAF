@@ -1,0 +1,31 @@
+-- Nombre y Apellido: Lautaro Ebner
+-- DNI: 43694206
+
+<Ax: : ¬(p.x => q.x)> ∨ <Ex: : _False ∧ p.x_> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Intercambio de rango del E,}
+<Ax: : ¬(p.x => q.x)> ∨ <Ex: _False_: p.x> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Rango vacio de E}
+<Ax: : ¬(p.x => q.x)> ∨ _False_ === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Elemento neutro de la disyuncion}
+<Ax: : ¬(_p.x => q.x_)> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Caracterizacion del implica}
+<Ax: : _¬(¬p.x ∨ q.x)_> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{De morgan para la disyuncion}
+<Ax: : _¬¬p.x_ ∨ ¬q.x> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Doble negacion}
+<Ax: : p.x ∨ ¬q.x> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Regla del termino de A}
+<Ax: : p.x> ∧ <Ax: : ¬q.x> === <Ax: : p.x> ∧ <Ax: : ¬q.x>
+{Reflexividad del ===}
+True
+
+
+
+
+
+
+
+
+
+
+

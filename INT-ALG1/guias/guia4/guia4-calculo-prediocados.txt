@@ -1,0 +1,220 @@
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 a) Intercambio entre rango y termino ∃
+
+<Ex : r.x : t.x>  
+{definicion de E}
+¬<Ax: r.x: ¬(t.x)>
+{A1}
+¬<Ax: : r.x => ¬(t.x)>
+{caracterizacion de la implicacion (T19)}
+¬<Ax: : ¬r.x ∨ ¬(t.x)>
+{de morgan para la disyuncion (T12)}
+¬<Ax: : ¬(r.x ∧ t.x)>
+{definicon de A}
+<Ex: : r.x ∧ t.x>
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 b) Regla del Termino del ∃
+
+<Ex: : t.x> ∨ <Ex: : u.x> === <Ex: : t.x ∨ u.x> 
+{definicion de E}
+¬<Ax : : ¬t.x> ∨ ¬<Ax : : ¬u.x> === <Ex: : t.x ∨ u.x> 
+{de morgan para la disyuncion (T12)}
+¬(<Ax : : ¬t.x> ∧ <Ax : : ¬u.x>) === <Ex: : t.x ∨ u.x> 
+{A2 - regla de termino}
+¬(<Ax : : ¬t.x ∧ ¬u.x>) === <Ex: : t.x ∨ u.x> 
+{de morgan para la disyuncion (T12)}
+¬(<Ax : : ¬(t.x ∨ u.x)>) === <Ex: : t.x ∨ u.x> 
+{definicion de E}
+<Ex: : t.x ∨ u.x> === <Ex: : t.x ∨ u.x> 
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 c) Regla del Termino del A
+<Ax: r.x: t.x> ∧ <Ax: r.x: u.x> === <Ax: r.x: t.x ∧ u.x>
+{A1 x2}
+<Ax: : r.x => t.x> ∧ <Ax: : r.x => u.x> === <Ax: r.x: t.x ∧ u.x>
+{A2}
+<Ax: : (r.x => t.x) ∧ (r.x => u.x)> === <Ax: r.x: t.x ∧ u.x>
+{T28 p=>q ∧ p=>r = P=>(q ∧ r) }
+<Ax: : r.x => (t.x ∧ u.x)> === <Ax: r.x: t.x ∧ u.x>
+{A1}
+<Ax: r.x: t.x ∧ u.x> === <Ax: r.x: t.x ∧ u.x>
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 d) Regla del Termino del ∃ (bis):
+
+<Ex: r.x: t.x> ∨ <Ex: r.x: u.x> === <Ex: r.x: t.x ∨ u.x>
+{Definiciond e E x2 }
+¬<Ax: r.x: ¬t.x> ∨ ¬<Ax: r.x: ¬u.x> === <Ex: r.x: t.x ∨ u.x>
+{A1}
+¬<Ax: : r.x => ¬t.x> ∨ ¬<Ax: : r.x => ¬u.x> === <Ex: r.x: t.x ∨ u.x>
+{A2}
+¬<Ax: : (r.x => ¬t.x) ∨ (r.x => ¬u.x)> === <Ex: r.x: t.x ∨ u.x>
+{caracterizacion del implica}
+¬<Ax: : (¬r.x ∧ ¬t.x) ∨ (¬r.x ∧ ¬u.x)> === <Ex: r.x: t.x ∨ u.x>
+{T12 - De morgan para la disyuncion}
+¬<Ax: : ¬(r.x ∧ t.x) ∨ ¬(r.x ∧ u.x)> === <Ex: r.x: t.x ∨ u.x>
+{T13 - De morgan para la conjuncion}
+¬<Ax: : ¬((r.x ∧ t.x) ∨ (r.x ∧ u.x))> === <Ex: r.x: t.x ∨ u.x>
+{T14 - ((p ∧ q) ∨ (p ∧ r)) = (p ∧ (q ∨ r))}
+¬<Ax: : ¬(r.x ∧ (t.x ∨ u.x))> === <Ex: r.x: t.x ∨ u.x>
+{T13 - De morgan para la conjuncion}
+¬<Ax: : ¬r.x ∧ ¬(t.x ∨ u.x)> === <Ex: r.x: t.x ∨ u.x>
+{caracterizacion}
+¬<Ax: : r.x => ¬(t.x ∨ u.x)> === <Ex: r.x: t.x ∨ u.x>
+{A1}
+¬<Ax: r.x : ¬(t.x ∨ u.x)> === <Ex: r.x: t.x ∨ u.x>
+{definicion de E}
+<Ex: r.x: t.x ∨ u.x> === <Ex: r.x: t.x ∨ u.x>
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 e) Particion de Rango del ∀:
+
+<Ax: r.x ∨ s.x: t.x> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{A1}
+<Ax: : (r.x ∨ s.x) => t.x> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{caracterizacion del implica}
+<Ax: : ¬(r.x ∨ s.x) ∨ t.x> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{T12 y acomodar }
+<Ax: : t.x ∨ (¬r.x ∧ ¬s.x)> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{{p ∨ (q ∧ r) = (p ∨ q) ∧ (p ∨ r)} y acomodar}
+<Ax: : (¬r.x ∨ t.x) ∧ (¬s.x ∨ t.x)> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{caracterizacion del implica}
+<Ax: : (r.x => t.x) ∧ (s.x => t.x)> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{A2}
+<Ax: : r.x => t.x> ∧ <Ax: : s.x => t.x> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+{A1}
+<Ax: r.x: t.x> ∧ <Ax: s.x: t.x> === <Ax: r.x: t.x> ∧ <Ax: s.x: t.x>
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 f) Particion de rango para ∃:
+<Ex: r.x ∨ s.x: t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{Definicion de E}
+¬<Ax: r.x ∨ s.x: ¬t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{T1}
+¬ (<Ax: r.x: ¬t.x> ∧ <Ax: s.x: ¬t.x>) === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x> 
+{T13}
+¬<Ax: r.x: ¬t.x> ∨ ¬<Ax: s.x: ¬t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x> 
+{Definicion de E}
+<Ex: r.x: t.x> ∨ <Ex: s.x: t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x> 
+
+-- 11 f) Particion de rango para ∃:
+<Ex: r.x ∨ s.x: t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{Definicion de E}
+¬<Ax: r.x ∨ s.x: ¬t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{A1}
+¬<Ax: : (r.x ∨ s.x) => ¬t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{caracterizacion del implica}
+¬<Ax: : ¬(r.x ∨ s.x) ∨ ¬t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{T12 y acomodar}
+¬<Ax: : ¬t.x ∨ (¬r.x ∧ ¬s.x)> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{T14}
+¬<Ax: : (¬t.x ∨ ¬r.x) ∧ (¬t.x ∨ ¬s.x)> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{A2}
+¬((<Ax: : ¬t.x ∨ ¬r.x>) ∧ (<Ax: : ¬t.x ∨ ¬s.x>)) === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{A13 y acomodar}
+¬(<Ax: : ¬r.x ∨ ¬t.x>) ∨ ¬(<Ax: : ¬s.x ∨ ¬t.x>) === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{caracterizacion del implicaimplica x2}
+¬(<Ax: : r.x => ¬t.x>) ∨ ¬(<Ax: : s.x => ¬t.x>) === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{A1}
+¬(<Ax: r.x: ¬t.x>) ∨ ¬(<Ax: s.x: ¬t.x>) === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+{definicion del E}
+<Ex: r.x: t.x> ∨ <Ex: s.x: t.x> === <Ex: r.x: t.x> ∨ <Ex: s.x: t.x>
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 11 g) Rango unitario:
+<Ex: x=y: t.x> === t.y
+{Definicion de E}
+¬<Ax: x=y: ¬t.x> === t.y
+{A4}
+¬(¬t.y) === t.y
+{doble negacion}
+t.y === y.y
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 11 h) Distributividad de ∧ con ∃:
+
+y ∧ <Ex: : t.x> === <Ex: : y ∧ t.x>
+{Definicion de E}
+y ∧ <Ex: : t.x> === ¬<Ax: : ¬(y ∧ t.x)>
+{T13}
+y ∧ <Ex: : t.x> === ¬<Ax: : ¬y ∨ ¬t.x>
+{caracterizacion de implicacion}
+y ∧ <Ex: : t.x> === ¬<Ax: : y => ¬t.x>
+y ∧ <Ex: : t.x> === ¬<Ax: True y: ¬t.x>
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 12) a) Rango vacıo del ∀:
+
+<Ax: False: t.x> === True
+{A1}
+<Ax: : False => t.x> === True
+{caracterizacion del implica}
+<Ax: : ¬False ∨ t.x> === True
+{Definicion de False}
+<Ax: : ¬(¬True) ∨ t.x> === True
+{Doble negacion}
+<Ax: : True ∨ t.x> === True
+{A3}
+True ∨ <Ax: : t.x> === True
+{Absorvente de la disyuncion}
+True === True
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 12) b) Rango vacıo del ∃:
+
+<Ex: False: t.x> === False
+{Definicion de E}
+¬<Ax: False: ¬t.x> === False
+{T5 - Rango vacio  de para todo}
+¬True === False
+{Definicion de False}
+False === False
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-- 12) c) Regla del Termino constante del ∀:
+<Ax : : C> === C
+{Elemento neutro de la conjuncion}
+<Ax : : C ∧ True> === C
+{Distributividad de ∧ con }
+C ∧ <Ax : : True> === C
+{Teorema $$}
+C ∧ True === C 
+{Elemento neutro de la conjuncion}
+C === C
+
+-- Teorema $$
+<Ax : : True> === True
+{notacion}
+<Ax : True : True> === True
+{elemento neutro de la conjuncion}
+<Ax : True ∧ a=x : True> === True
+{T1}
+<Ax : True: True> ∧ <Ax: a=x : True> === True
+{rango unitario}
+<Ax : True: True> ∧ True === True
+{elemento neutro de la conjuncion}
+True === True
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 13) a) 
+
+
+
+
+-- extra
+(<E x: r.x: t.x> ∧ <Ax: r.x: s.x>) => <Ex: r.x: t.x ∧ s.x>
+
+
+
+
+
+
+
+
+
+
+

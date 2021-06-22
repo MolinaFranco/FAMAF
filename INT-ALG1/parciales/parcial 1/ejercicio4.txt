@@ -1,0 +1,64 @@
+HIPOTESIS INDUCTIVA
+productoria (sacaUnos xs) = productoria xs
+
+CASO BASE
+≡ {planteo del caso base}
+productoria (_sacaUnos []_) = productoria []
+
+≡ {por (1)}
+productoria [] = productoria []
+≡ {reflex. del igual}
+
+CASO INDUCTIVO:
+
+a) CASO CON X=1:
+≡{planteo del caso inductivo con x=1}
+productoria (_sacaUnos x:xs_) = _productoria x:xs_
+
+≡{por (2a) y por (4)}
+productoria (sacaUnos xs) = 1 * _productoria xs_
+
+≡{por HI y aritmetica}
+≡{reflex. del igual}
+productoria (sacaUnos xs) = productoria (sacaUnos xs)
+
+
+b) CASO CON X/=1:
+≡{planteo del caso inductivo con x/=1}
+productoria (_sacaUnos x:xs_) = _productoria x:xs_
+
+≡{por (2b) y por (4)}
+productoria(x:(sacaUnos xs)) = x * _productoria xs_ 
+
+≡{por HI}
+_productoria(x:(sacaUnos xs))_ = x * productoria (sacaUnos xs)
+
+≡{por (4); x:=x; xs:=sacaUnos(xs)}
+≡{reflex. del igual}
+x * productoria(sacaUnos xs) = x * productoria (sacaUnos xs)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
