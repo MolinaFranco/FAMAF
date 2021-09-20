@@ -1,0 +1,62 @@
+{
+	// Place your INT-ALG1 workspace snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	"and": {
+		"scope": "haskell, markdown",
+		"prefix": "and",
+		"body": [
+			"∧"
+		],
+	},
+
+	"or": {
+		"scope": "haskell, markdown",
+		"prefix": "or",
+		"body": [
+			"∨"
+		],		
+	},
+	"equal": {
+		"scope": "haskell, markdown",
+		"prefix": "=t",
+		"body": [
+			"≡"
+		],		
+	},
+	"indice": {
+		"scope": "haskell, markdown",
+		"prefix": "indi",
+		"body": [
+			"0<i<=#xs"
+		],		
+	},
+	"sumatoria": {
+		"scope": "markdown, haskell",
+		"prefix": "sumatoria",
+		"body": ["Σ"],
+		"description": "Caracter de Sumatoria (Σ)"
+	},
+	"productoria": {
+		"scope": "markdown, haskell",
+		"prefix": "productoria",
+		"body": ["Π"],
+		"description": "Caracter de productoria (Π)"
+	},
+	"paratodo": {
+		"scope": "markdown, haskell",
+		"prefix": "paratodo",
+		"body": ["∀"],
+		"description": "Caracter de paratodo (∀)"
+	},
+	"existe": {
+		"scope": "markdown, haskell",
+		"prefix": "existe",
+		"body": ["∃"],
+		"description": "Caracter de existe (∃)"
+	}
+}
