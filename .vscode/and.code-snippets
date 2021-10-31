@@ -58,5 +58,29 @@
 		"prefix": "existe",
 		"body": ["∃"],
 		"description": "Caracter de existe (∃)"
-	}
+	},
+	"infinito": {
+		"scope": "markdown, haskell",
+		"prefix": "infinito",
+		"body": ["∞"],
+		"description": "Caracter de infinito (∞)"
+	},
+	"haskellmd": {
+		"scope": "markdown, haskell",
+		"prefix": "haskell",
+		"body": [
+			"```haskell",
+			"",
+			"```"
+		],
+		"description": "shorcut to haskell in markdown"
+	},
+	"take": {
+		"scope": "markdown, haskell",
+		"prefix": "take",
+		"body": [
+			"↑"
+		],
+		"description": "shorcut to take (↑)"
+	},
 }
