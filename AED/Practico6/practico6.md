@@ -323,7 +323,7 @@ fi
 
         {Uso la obligacion de prueba del If}
 
-1.      (|r|<=N ∧ r!=0 ∧ |r| =K) => r<0 V r>0
+1.      (|r|<=N ∧ r!=0 ∧ |r| =K) => r<0 ∨ r>0
         ={r!=0}
         (|r|<=N ∧ r!=0 ∧ |r| =K) => True
         ={=> True}
@@ -503,5 +503,254 @@ b)
         [] ¬B0→S1
         fi
         {Q}
+
+sabemos que 
+1.  P ⇒ B0 ∨ B1
+2.  { P ∧ B0 } S0 {Q} 
+3.  { P ∧ B1 } S1 {Q}
+
+tenemos q probar entonces que
+1.  P ⇒ B0 ∨ ¬B0
+2.  { P ∧ B0  } S0 {Q} 
+3.  { P ∧ ¬B0 } S1 {Q}
+
+
+1) 
+        P ⇒ B0 ∨ ¬B0
+        ={tercer excluido}
+        P ⇒ True
+        ={}
+        True
+2)
+        { P ∧ B0 } S0 {Q}
+        ={por hipotesis (2)}
+        True 
+
+3)
+        { P ∧ ¬B0 } S1 {Q}
+
+        (( {A=>A'} => ({A} S1 {Q} => {A'} S1 {Q}) ))
+        ={ necesito demostrar (P ∧ ¬B0)) => (P ∧ B1) }
+        ={ veamos que  ((P ⇒ B0 ∨ B1) ∧ (P ∧ ¬B0)) => (P ∧ B1)  }
+        
+        (P ∧ ¬B0) ∧ (P ⇒ B0 ∨ B1)  => (P ∧ B1)
+        ={caract}
+
+        ¬((P ∧ ¬B0) ∧ (¬P ∨ B0 ∨ B1)) ∨ (P ∧ B1)
+        ={morgan}
+
+        ¬(P ∧ ¬B0) ∨ ¬(¬P ∨ B0 ∨ B1) ∨ (P ∧ B1)
+        ={morgan x2}
+
+        ¬P ∨ B0 ∨ P ∨ ¬B0 ∨ ¬B1 ∨ (P ∧ B1)
+        ={tercer ex}
+
+        ¬P ∨ P ∨ ¬B1 ∨ (P ∧ B1)
+        ={distri}
+
+        ¬P ∨ P ∨ ¬B1 ∨ P ∧ ¬P ∨ P ∨ ¬B1 ∨ B1 
+        ={Tercero Exc, abs del V y neutro del ∧}
+
+        True
+```
+
+## 6)
+
+#### a)
+
+```haskell
+
+Const N:Int, A:array[0, N) of Num;
+Var s : Num, i:Int;
+{N≥0}
+i,s:= 0,0;
+do i != N -> 
+        s:=s+A.i
+od
+{s=〈∑k : 0≤k<N : A.k〉
+
+En la post condicion asegura q s sea la suma de 
+
+```
+
+## 9)
+
+```haskell
+
+Const X,Y : Int;
+Var x,y : Int;
+{X>0 ∧ Y>0 ∧ x=X ∧ y=Y}
+S
+{x=mcd.X.Y}
+
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y}
+
+Para la derivacion seran de utilidad las siguientes propiedades del mcd:
+a)mcd.x.x = x
+b)mcd.x.y = mcd.y.x
+c)x>y ⇒ mcd.x.y = mcd.(x−y).y
+d)y>x ⇒ mcd.x.y = mcd.x.(y−x)
+
+- Lo refinamos como (la composición secuencial de ) una inicialización y un ciclo
+
+{X>0 ∧ Y>0 ∧ x=X ∧ y=Y}
+ S0;
+ {I}
+ do (B) ->
+    S1;
+ od
+{x = mdc.X.Y}
+
+- ya me dan el Invariante por lo que propongo una guarda para el ciclo que garantiza  I∧¬B ⇒ Q
+
+B = (x−y!=0) o sea B = (x!=y) 
+
+{X>0 ∧ Y>0 ∧ x=X ∧ y=Y}
+ S0;
+ {I}
+ do (x!=y) ->
+  {I ∧ B}
+  S1;
+  {I}
+ od
+{x = mdc.X.Y}
+
+- Ahora con el invariante y la guarda, refino S₁:
+
+{I ∧ B}
+  S1;
+{I}
+
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (x!=y)}
+  S1;
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y}
+
+
+- sabemos que va a tener una asignacion de las variables y ademas planteamos una cota 
+tal que T>=0 
+- ademas tenemos que asignarle valores a las variables
+
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (x!=y) ∧ T=x−y}
+    x,y := E, F
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ x−y<T}
+
+- Ahora buscamos los valores de E y F con la obligacion de prueba de la asignacion
+
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (x!=y) ∧ T=x−y}
+=> {I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ x−y<T}(x,y := E, F)
+
+{I: x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (x!=y) ∧ T=x−y}
+=> {I: E>0 ∧ F>0 ∧ mcd.E.F=mcd.X.Y ∧ E−F<T}
+
+con esto vemos q x e y siempre tienen q ser mayores a 0 y su mcd tiene que ser igual al de sus valores iniciales
+
+ahora propongo una condicion para poder trabajar con 3) o 4) dependiendo el estado
+
+{I ∧ (y!=x) ∧ x-y=T}
+ if
+  x>y -> x, y := E1, F1
+  x<y -> x, y := E2, F2
+ fi
+{I ∧ x-y < T}
+
+y ahora bucamos los valores que se deben asignar en cada caso con la obligacion de prueba del if
+
+I : (x > 0 ∧ y > 0 ∧ mcd.x.y = mcd.X.Y)
+
+1.  P ⇒ b₁ ∨ b₂
+
+{{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y} ∧ (y!=x) ∧ x-y=T} => (x>y) ∨ (x<y)
+={tricotomia}
+{{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y} ∧ (y!=x) ∧ x-y=T} => (x!=y)
+={debilitamiento por (y!=x)}
+True
+
+2.  { P ∧ b₁ } c₁ {Q}      y      { P ∧ b₂ } c₂ {Q}
+      
+{{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (y!=x) ∧ x-y=T} ∧ (x>y)} (x, y := E1, F1) {x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ x-y < T}
+
+={obligacion de prueba de la asignacion}
+
+{{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (y!=x) ∧ x-y=T} ∧ (x>y)} 
+=> {E1>0 ∧ F1>0 ∧ mcd.E1.F1=mcd.X.Y ∧ E1-F1 < T}
+
+={(x>y) y (x>0 ∧ y>0) y (x-y=T)}
+
+{{mcd.x.y=mcd.X.Y} ∧ (x>y>0)} 
+=> {E1>0 ∧ F1>0 ∧ mcd.E1.F1=mcd.X.Y ∧ E1-F1<x-y}
+
+Por lo que podemos deducir que E1 = x-y, F1 = y
+
+{{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (y!=x) ∧ x-y=T} ∧ (x<y)} (x, y := E1, F1) {x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ x-y < T}
+
+={obligacion de prueba de la asignacion}
+
+{{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (y!=x) ∧ x-y=T} ∧ (x<y)} 
+=> {E1>0 ∧ F1>0 ∧ mcd.E1.F1=mcd.X.Y ∧ E1-F1 < T}
+
+={(x<y) y (x<0 ∧ y<0) y (x-y=T)}
+
+{{mcd.x.y=mcd.X.Y} ∧ (y>x>0)} 
+=> {E1>0 ∧ F1>0 ∧ mcd.E2.F2=mcd.X.Y ∧ E2-F2<y-x}
+
+Por lo que podemos deducir que E2 = x, F2 = y-x,
+
+Ahora probemos estas 2 con las condiciones de prueba
+
+{x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ (y!=x) ∧ x-y=T} ∧ x>y 
+(x, y := x-y, y) {x>0 ∧ y>0 ∧ mcd.x.y=mcd.X.Y ∧ x-y < T}
+
+{condicion de prueba de la asignacino}
+
+{{mcd.x.y=mcd.X.Y} ∧ (y>x>0)}
+=> {x-y>0 ∧ y>0 ∧ mcd.(x-y).y=mcd.X.Y ∧ x-y-y < T}
+
+={x-y>0 e y>0, pues x>y>0}
+
+{mcd.(x-y).y=mcd.X.Y ∧ x-y-y < T}
+
+={mcd.x.y = mcd.X.Y}
+
+{(mcd.(x-y).y = mcd.x.y) ∧ x-y-y < T}
+
+={propiedad del mcd}
+
+{(mcd.(x-y).y = mcd.x.y) ∧ x-y-y < T}
+
+={regla del mcd x>y ⇒ mcd.x.y = mcd.(x−y).x}
+
+{True ∧ x-y-y < T}
+
+(x-y-y < T)
+
+={x-y=T por Hipo}
+
+(x-y-y < x-y)
+
+True
+
+Lo dejo aca es basicamente repetir lo mismo con el otro lado
+
+
+Resultado final
+
+{x=X, y=Y, x,y>0}
+ do (y!=x) ->
+  {I /\ (y!=x)}
+   if
+    x > y -> x, y := x-y, y
+    x < y -> x, y := x, y-x
+   fi
+  {I}
+ od
+ res := x
+{res = mdc.x.y}
+
+
+```
+
+## 10)
+
+```haskell
 
 ```
