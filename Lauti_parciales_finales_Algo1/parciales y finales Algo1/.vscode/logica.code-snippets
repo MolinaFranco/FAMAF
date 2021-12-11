@@ -1,0 +1,76 @@
+{
+	"sumatoria": {
+		"scope": "markdown, haskell",
+		"prefix": "sumatoria",
+		"body": ["Σ"],
+		"description": "Caracter de Sumatoria (Σ)"
+	},
+	"productoria": {
+		"scope": "markdown, haskell",
+		"prefix": "productoria",
+		"body": ["Π"],
+		"description": "Caracter de productoria (Π)"
+	},
+	"paratodo": {
+		"scope": "markdown, haskell",
+		"prefix": "paratodo",
+		"body": ["∀"],
+		"description": "Caracter de paratodo (∀)"
+	},
+	"existe": {
+		"scope": "markdown, haskell",
+		"prefix": "existe",
+		"body": ["∃"],
+		"description": "Caracter de existe (∃)"
+	},
+	"and": {
+		"scope": "markdown, haskell",
+		"prefix": "and",
+		"body": [
+			"∧"
+		],
+		"description": "shorcut to and (∧)"
+	},
+	"haskell": {
+		"scope": "markdown, haskell",
+		"prefix": "haskell",
+		"body": [
+			"```haskell",
+			"",
+			"```"
+		],
+		"description": "shorcut to haskell in markdown"
+	},
+	"take": {
+		"scope": "markdown, haskell",
+		"prefix": "take",
+		"body": [
+			"↑"
+		],
+		"description": "shorcut to take (↑)"
+	},
+	"or": {
+		"scope": "markdown, haskell",
+		"prefix": "or",
+		"body": [
+			"∨"
+		],
+		"description": "shorcut to or (∨)"
+	},
+	"details": {
+		"scope": "markdown",
+		"prefix": "details",
+		"body": [
+			"####",
+			"<details>",
+			"<summary> </summary>",
+			"```haskell",
+			"```",
+			"</details>",
+			"####",
+			"$2",
+		],
+		"description": "Log output to console"
+	}
+
+}

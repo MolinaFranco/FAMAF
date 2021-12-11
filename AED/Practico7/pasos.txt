@@ -1,0 +1,35 @@
+- Lo refinamos como (la composición secuencial) una inicialización y un ciclo.
+
+{P}
+S0;
+{I}
+do B →
+ S₁
+od
+{Q}
+
+- Definir el invariante tal que P=>I
+
+- Para esto necesitamos que 0<=x y por esto lo inicializo en 0 
+
+- y necesitamos la guarda, garantizando I∧¬B ⇒ Q
+
+- por ende ¬B = (x³+x>=N) 
+- planteo lo que sabemos ademas agrego { I ∧ b } c { I } para deribar el programa
+
+- refinamos S₁ planteando una asignacion de las variables
+
+- Como queremos que el ciclo termine agreguemos la condición sobre la cota (que decrezca)
+
+- Esto nos indica que x tiene que incrementarse , entonces refinamos S₁ .
+
+- Planteo lo que se hasta el momento
+
+- verifico el planteamiento de x:=x+1
+
+={tomo como hipotesis la P y laburo en la => }
+
+- Como la cota es T != 0 ya que la guarda asegura que x<N y de hipotesis 0<=x<=N
+- entonces sabemos que 0<=x+1<=N se cumple 
+
+Programa final:
