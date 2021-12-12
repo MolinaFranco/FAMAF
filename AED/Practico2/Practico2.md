@@ -214,7 +214,7 @@ CI: cuantos.p.(x:xs)
 ```haskell
 busca.e.xs= < Min i : 0≤i <#xs∧xs!i=e : i >
 
-p.x = ( (x:xs)!0=e -> 0
+aux = ( (x:xs)!0=e -> 0
      ¬(x:xs)!0=e -> ∞
      )
 

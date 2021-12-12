@@ -32,7 +32,7 @@
 		"scope": "haskell, markdown",
 		"prefix": "indi",
 		"body": [
-			"0<i<=#xs"
+			"0<=$2<#xs"
 		],		
 	},
 	"sumatoria": {
@@ -82,5 +82,18 @@
 			"↑"
 		],
 		"description": "shorcut to take (↑)"
+	},
+	"details": {
+		"scope": "markdown",
+		"prefix": "details",
+		"body": [
+			"####",
+			"<details>",
+			"<summary> $2 </summary>",
+			"```haskell",
+			"```",
+			"</details>",
+		],
+		"description": "Log output to console"
 	},
 }
