@@ -284,6 +284,113 @@ sumpot.x.0 := 0
 sumpot.x.n+1 := 1 + sumpot.x.n * x
 ```
 
+#### d)
+
+decide si existe un elemento igual al producto de los elementos que le siguen:
+
+```haskell
+
+prodsuf :: [Num] -> Bool 
+prodsuf.xs = <∃i : 0<i≤#xs : <Πj : 0≤j<#(xs↓i) : (xs↓i)!j> = xs!(i−1)>
+
+CB: 
+prodsuf.[] 
+= <∃i : 0<i≤#[] : <Πj : 0≤j<#([]↓i) : ([]↓i)!j> = []!(i−1)>
+{caso base de # y ↓ }
+= <∃i : 0<i≤0 : <Πj : 0≤j<0 : []!j> = []!(i−1)>
+{logica}
+= <∃i : False : <Πj : 0≤j<0 : []!j> = []!(i−1)>
+{rango vacio}
+= False
+
+HI: prodsuf.xs = <∃i : 0<i≤#xs : <Πj : 0≤j<#(xs↓i) : (xs↓i)!j> = xs!(i−1)>
+
+CI:
+
+prodsuf.x:xs 
+= <∃i : 0<i≤#x:xs : <Πj : 0≤j<#(x:xs↓i) : (x:xs↓i)!j> = x:xs!(i−1)>
+
+MODULARISO prod.i.xs
+prod :: Num -> [Num] -> Num
+
+CB:
+prod i [] 
+= <Πj : 0≤j<#([]↓i) : ([]↓i)!j>
+{caso base de ↓ y #}
+= <Πj : 0≤j<0 : []!j>
+{logica}
+= <Πj : False : []!j>
+{rango vacio}
+= 1
+
+HI: prod i xs = <Πj : 0≤j<#(xs↓i) : (xs↓i)!j> 
+
+CI:
+
+prod i x:xs 
+= <Πj : 0≤j<#(x:xs↓i) : (x:xs↓i)!j>
+
+-- Caso i=0
+= <Πj : 0≤j<#(x:xs↓0) : (x:xs↓0)!j>
+{regla ↓}
+= <Πj : 0≤j<#(x:xs) : (x:xs)!j>
+{ci de # y  separo <=}
+= <Πj : 0=j ∨ 0<j<#(xs)+1 : (x:xs)!j>
+{particion de rango y aritmetica}
+= <Πj : 0=j : (x:xs)!j> * <Πj : 0<=j-1<#(xs) : (x:xs)!j>
+{cambio de variable y rango unitario}
+= (x:xs)!0 * <Πu : 0<=u<#(xs) : (x:xs)!u+1>
+{ci de ! }
+= x * <Πu : 0<=u<#(xs) : (xs)!u>
+{HI}
+prod 0 (x:xs) = x * prod 0 xs
+
+--caso i=(i+1)
+= <Πj : 0≤j<#(x:xs↓(i+1)) : (x:xs↓(i+1))!j>
+{ci de ↓}
+= <Πj : 0≤j<#(xs↓i) : (xs↓i)!j>
+{HI}
+= prod (i+1) xs
+
+Resultado
+prod i [] = 1
+prod 0 (x:xs) = x * prod 0 xs
+prod (i+1) (x:xs) = prod i xs
+
+SIGO DERIVANDO 
+
+HI: prodsuf.xs = <∃i : 0<i≤#xs : prod.i.xs = xs!(i−1)>
+
+CI:
+
+prodsuf.x:xs 
+= <∃i : 0<i≤#x:xs : prod.i.x:xs == x:xs!(i−1)>
+{ci de #}
+= <∃i : 0<i≤#xs+1 : prod.i.x:xs == x:xs!(i−1)>
+{logica}
+= <∃i : 1=i ∨ 1<i≤#xs+1 : prod.i.x:xs == x:xs!(i−1)>
+{particion de rango}
+= <∃i : 1=i : prod.i.x:xs == x:xs!(i−1)> ∧ <∃i : 1<i≤#xs+1 : prod.i.x:xs == x:xs!(i−1)>
+{rango unitario}
+= prod.1.x:xs == x:xs!(0)> ∨ <∃i : 1<i≤#xs+1 : prod.i.x:xs == x:xs!(i−1)>
+{!0 y regla prod}
+= (prod.0.xs == x) ∨ <∃i : 1<i≤#xs+1 : prod.i.x:xs == x:xs!(i−1)>
+{algebra}
+= (prod.0.xs == x) ∨ <∃i : 0<i-1≤#xs : prod.i.x:xs == x:xs!(i−1)>
+{cambio de variable j=i-1}
+= (prod.0.xs == x) ∨ <∃j : 0<j≤#xs : prod.(j+1).x:xs == x:xs!(j)>
+{ci de prod}
+= (prod.0.xs == x) ∨ <∃j : 0<j≤#xs : prod.j.xs == x:xs!(j)>
+{sabemos que j!=0 por el rango, por lo que ! usa ci 2}
+= (prod.0.xs == x) ∨ <∃j : 0<j≤#xs : prod.j.xs == xs!(j-1)>
+{HI}
+= (prod.0.xs == x) ∨ prodsuf.xs
+xd
+
+```
+
+
+
 ## EJ 5
 
 Especificar formalmente utilizando cuantificadores 
@@ -319,12 +426,4 @@ estan ordenados enforma creciente.
 creciente :: [Int]→Bool
 creciete = <∀i : 0<=i<#xs-1 : <∀j : j=i+1 : xs!!i<=xs!!j> >
 
-```
-
-#### d) 
-que  calcula  el  producto  entre  pares  de  elementos  en  
-iguales posiciones de las listas y suma estos resultados (producto punto). 
-Si las listas tienen distinto tama ̃nose opera hasta la  ́ultima posici ́on de las m ́as chica
-```haskell
-prod :: [Num]→[Num]→Num
 ```

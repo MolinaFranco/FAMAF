@@ -83,6 +83,14 @@
 		],
 		"description": "shorcut to take (↑)"
 	},
+	"drop": {
+		"scope": "markdown, haskell",
+		"prefix": "drop",
+		"body": [
+			"↓"
+		],
+		"description": "shorcut to drop (↓)"
+	},
 	"details": {
 		"scope": "markdown",
 		"prefix": "details",
