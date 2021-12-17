@@ -554,7 +554,7 @@ tenemos q probar entonces que
         True
 ```
 
-## 6)
+## F6)
 
 #### a)
 
@@ -749,7 +749,6 @@ Resultado final
 
 ```
 
-## 10)
 
 ```haskell
 
