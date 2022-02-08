@@ -218,3 +218,55 @@ False
 
 
 ```
+
+## EJ3
+
+Especificar con pre y post condicion los siguientes problemas. 
+Declarar constantes y variables. No
+derivar
+
+#### a)
+
+Dado un arreglo A de N ≥ 0 elementos,
+calcular si todos los elementos del arreglo son exponentes de 2
+
+```haskell
+Const N : Int;
+Var A : Array [0,N) of Int
+Var r : Bool
+Var x,y,n : Int
+
+{0<=N}
+S0;
+
+do (B)
+    -- aca recorro todos los  elementos del array 
+    do(B2)
+    -- aca recorro todos los numero entre 0 y el elemento del array
+    -- buscando si se cumple en algun elemnto: A!!x = 2^y
+    od
+od
+
+con esto se que voy a necesitar dos variables x (que rrecorra A) e y que vaya comprobando el enunciado'
+
+ademas vamos a necesitar un n para hacer cambio de constante por variable
+
+{r = <∀i : 0<=i<=N : <∃j : 0<=j<=A!!i : A!!i = 2^j>>}
+
+r va a ser una variable inicializada en true y el porgrama sera un ciclo anidado donde al pasar por 
+
+```
+
+#### b)
+
+```haskell
+
+Dado un arreglo A de N > 0 elementos, calcular si la suma de alg ́un segmento es mayor que el maximo elemento del arreglo. 
+Ejemplo: Con A = [6, −8, 7, −5, 10] la respuesta es afirmativa,
+ya que el segmento [7, −5, 10] suma 12 que es mayor que el m ́aximo elemento 10.
+
+Var A : Array [0,N) of Int
+
+
+
+```
