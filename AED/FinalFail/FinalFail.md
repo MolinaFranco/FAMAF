@@ -514,3 +514,5 @@ Const K : Int,
 {M>=2}
 S1
 {r=<∃i,j : 0<=i<j<M ∧ j=i+1 : (A.i max A.j) - (A.i min A.j)>}
+
+
