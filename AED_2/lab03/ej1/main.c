@@ -10,6 +10,7 @@
 
 /* Then, this project's includes, alphabetically ordered */
 #include "array_helpers.h"
+#include "weather_utils.h"
 
 /**
  * @brief print usage help
@@ -69,6 +70,20 @@ int main(int argc, char *argv[]) {
 
     /* parse the file to fill the array and obtain the actual length */
     array_from_file(array, filepath);
+
+    // Menor temperatura minima
+    int min_temp = min_temp_min(array);
+    printf("Temperatura minima registrada: %d \n", min_temp);
+
+    // Mayor temperatura máxima
+    int maxs_temps[YEARS];
+    max_temp_for_year(array, maxs_temps);
+    max_temp_for_year_dump(maxs_temps);
+
+    // Mayor cantidad mensual de precipitaciones
+    month_t max_preps[YEARS];
+    max_month_prep(array, max_preps);
+    max_month_prep_dump(max_preps);
 
     /* show the ordered array in the screen */
     array_dump(array);

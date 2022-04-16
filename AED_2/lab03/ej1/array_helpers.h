@@ -28,6 +28,10 @@ typedef Weather WeatherTable [YEARS][MONTHS][DAYS];
  */
 void array_dump(WeatherTable a);
 
+void max_temp_for_year_dump(int array[YEARS]);
+
+void max_month_prep_dump(month_t array[YEARS]);
+
 
 /**
  * @brief reads an array of weather information from file
