@@ -2,6 +2,10 @@
     "editor.fontFamily": "Fira Code, Consolas, 'Courier New', monospace",
     "C_Cpp.errorSquiggles": "Disabled",
     "files.associations": {
-        "assert.h": "c"
+        "assert.h": "c",
+        "string_view": "c",
+        "random": "c",
+        "limits": "c",
+        "array": "c"
     }
 }

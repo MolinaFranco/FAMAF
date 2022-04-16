@@ -51,6 +51,7 @@ void array_from_file(WeatherTable array, const char *filepath) {
     unsigned int k_year = 0u;
     unsigned int k_month = 0u;
     unsigned int k_day = 0u;
+    
     while (!feof(file)) {
         int res = fscanf(file, " %u %u %u ", &k_year, &k_month, &k_day);
         if (res != 3) {
@@ -58,7 +59,29 @@ void array_from_file(WeatherTable array, const char *filepath) {
             exit(EXIT_FAILURE);
         }
         Weather weather = weather_from_file(file);
+        
         /* Completar acá: Guardar la medición de clima en el arreglo multidimensional */
+
+        // tengo que guardar en el lugar del arreglo donde luego pueda verlo con el dump
+        --k_day;
+        --k_month;
+        k_year = k_year - FST_YEAR;
+
+        array[k_year][k_month][k_day] = weather; 
+
     }
     fclose(file);
+}
+
+
+void max_temp_for_year_dump(int array[YEARS]) {
+    for (unsigned int year = 0u; year < YEARS; ++year) {
+        printf("Maxima temperatura de %d: %d\n", year+FST_YEAR, array[year]); 
+    }
+}
+
+void max_month_prep_dump(month_t array[YEARS]) {
+    for (unsigned int year = 0u; year < YEARS; ++year) {
+        printf("Mes con mas precipitaciones de %d: %u\n", year+FST_YEAR, array[year]); 
+    }
 }
