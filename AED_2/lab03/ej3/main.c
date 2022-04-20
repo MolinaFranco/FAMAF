@@ -34,6 +34,23 @@ int main(void) {
        AYUDA: podes usar GDB para consultares valores de variables y la dirección de memoria donde estan alojadas.
     */
 
+    //inicializo p
+    int *p = NULL;
+    // apunto p a donde este guardado x
+    p = &x;
+    // uso p para cambiar el valor de x
+    *p = 9;
+
+    person_t *pp = NULL;
+    pp = &m;
+    (*pp).age = 100;
+    (*pp).name_initial = 'F';
+
+    int *pa = NULL;
+    pa = &a[1];
+    (*pa) = 42;
+
+
     printf("x = %d\n", x);
     printf("m = (%d, %c)\n", m.age, m.name_initial);
     printf("a[1] = %d\n", a[1]);

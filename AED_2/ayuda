@@ -1,0 +1,6 @@
+$ gcc -Wall -Wextra -pedantic -std=c99 -c helpers.c sort.c main.c
+$ gcc -Wall -Wextra -pedantic -std=c99 helpers.o sort.o main.o -o mysort
+$ ./mysort ../input/atpplayers.in
+
+$ ./mysort ../input/atpplayers.in > atpplayers.out
+$ diff ../input/atpplayers.in atpplayers.out
