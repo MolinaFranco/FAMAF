@@ -1,9 +1,8 @@
 # Requerimientos
 
-"""
+```
 pip install -r requeriments.txt
-sudo apt-get install python3-matplotlib
-"""
+```
 
 # Instrucciones
 
@@ -16,3 +15,5 @@ sudo apt-get install python3-matplotlib
 # Notas
 
 - Todas las funciones auxiliares (extras a los solicitado) estan en helper.py
+
+- Las preguntas del ej5 estas respondidas en el mismo archivo ej5.py
