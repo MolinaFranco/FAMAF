@@ -16,4 +16,4 @@ pip install -r requeriments.txt
 
 - Todas las funciones auxiliares (extras a los solicitado) estan en helper.py
 
-- Las preguntas del ej5 estas respondidas en el mismo archivo ej5.py
+- Las preguntas del ej5 fueron respondidas en el mismo archivo ej5.py

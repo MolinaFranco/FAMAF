@@ -20,4 +20,7 @@ plt.xlabel('x')
 plt.ylabel('y')
 plt.grid()
 plt.title('Tylor_seno,5,0')
-plt.show()
+# Como laburo con wsl es mas facil guardarlo en un png (nunca se especifico como mostrar el grafico)
+plt.savefig("mygraph.png")
+# Si estamos en Ubuntu o corriendo por la powershell, simplemente podemos habilitar el show 
+#plt.show()
