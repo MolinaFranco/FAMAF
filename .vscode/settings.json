@@ -6,6 +6,7 @@
         "string_view": "c",
         "random": "c",
         "limits": "c",
-        "array": "c"
+        "array": "c",
+        "stdbool.h": "c"
     }
 }

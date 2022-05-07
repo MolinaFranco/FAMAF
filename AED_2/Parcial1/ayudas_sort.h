@@ -1,17 +1,3 @@
-/*
- *
- * Author   2017 Daniel Fridlender
- *
- * Revision 2018 Sergio Canchi
- *
- *
- */
-
-
-#ifndef _SORT_HELPERS_H
-#define _SORT_HELPERS_H
-
-#include <stdbool.h>
 
 /* Abstract total order for sorting algorithms */
 bool goes_before(int x, int y);
