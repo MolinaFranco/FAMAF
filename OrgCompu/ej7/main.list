@@ -1,0 +1,115 @@
+
+main.elf:     file format elf64-littleaarch64
+
+
+Disassembly of section .text:
+
+0000000040080000 <end-0x20>:
+    40080000:	8b1f0000 	add	x0, x0, xzr
+    40080004:	58000126 	ldr	x6, 40080028 <end+0x8>
+    40080008:	58000200 	ldr	x0, 40080048 <contenido_X0>
+    4008000c:	910020c9 	add	x9, x6, #0x8
+    40080010:	8b1f00ca 	add	x10, x6, xzr
+    40080014:	f800012a 	stur	x10, [x9]
+    40080018:	f8400129 	ldur	x9, [x9]
+    4008001c:	8b0a0120 	add	x0, x9, x10
+
+0000000040080020 <end>:
+    40080020:	14000000 	b	40080020 <end>
+    40080024:	00000000 	.inst	0x00000000 ; undefined
+    40080028:	40080030 	.inst	0x40080030 ; undefined
+    4008002c:	00000000 	.inst	0x00000000 ; undefined
+
+Disassembly of section .data:
+
+0000000040080030 <Array>:
+    40080030:	00000064 	.inst	0x00000064 ; undefined
+    40080034:	00000000 	.inst	0x00000000 ; undefined
+    40080038:	000000c8 	.inst	0x000000c8 ; undefined
+    4008003c:	00000000 	.inst	0x00000000 ; undefined
+    40080040:	0000012c 	.inst	0x0000012c ; undefined
+    40080044:	00000000 	.inst	0x00000000 ; undefined
+
+0000000040080048 <contenido_X0>:
+    40080048:	0000000a 	.inst	0x0000000a ; undefined
+    4008004c:	00000000 	.inst	0x00000000 ; undefined
+
+Disassembly of section .debug_line:
+
+0000000000000000 <.debug_line>:
+   0:	0000003c 	.inst	0x0000003c ; undefined
+   4:	001d0003 	.inst	0x001d0003 ; undefined
+   8:	01040000 	.inst	0x01040000 ; undefined
+   c:	000d0efb 	.inst	0x000d0efb ; undefined
+  10:	01010101 	.inst	0x01010101 ; undefined
+  14:	01000000 	.inst	0x01000000 ; undefined
+  18:	00010000 	.inst	0x00010000 ; undefined
+  1c:	6e69616d 	rsubhn2	v13.8h, v11.4s, v9.4s
+  20:	0000732e 	.inst	0x0000732e ; undefined
+  24:	00000000 	.inst	0x00000000 ; undefined
+  28:	00000209 	.inst	0x00000209 ; undefined
+  2c:	00004008 	.inst	0x00004008 ; undefined
+  30:	21160000 	.inst	0x21160000 ; undefined
+  34:	21212121 	.inst	0x21212121 ; undefined
+  38:	02232121 	.inst	0x02232121 ; undefined
+  3c:	01010004 	.inst	0x01010004 ; undefined
+
+Disassembly of section .debug_info:
+
+0000000000000000 <.debug_info>:
+   0:	0000002a 	.inst	0x0000002a ; undefined
+   4:	00000002 	.inst	0x00000002 ; undefined
+   8:	01080000 	.inst	0x01080000 ; undefined
+   c:	00000000 	.inst	0x00000000 ; undefined
+  10:	40080000 	.inst	0x40080000 ; undefined
+  14:	00000000 	.inst	0x00000000 ; undefined
+  18:	40080030 	.inst	0x40080030 ; undefined
+	...
+  24:	00000007 	.inst	0x00000007 ; undefined
+  28:	0000003a 	.inst	0x0000003a ; undefined
+  2c:	Address 0x000000000000002c is out of bounds.
+
+
+Disassembly of section .debug_abbrev:
+
+0000000000000000 <.debug_abbrev>:
+   0:	10001101 	adr	x1, 220 <end-0x4007fe00>
+   4:	12011106 	and	w6, w8, #0x8000000f
+   8:	1b0e0301 	madd	w1, w24, w14, w0
+   c:	130e250e 	sbfiz	w14, w8, #18, #10
+  10:	00000005 	.inst	0x00000005 ; undefined
+
+Disassembly of section .debug_aranges:
+
+0000000000000000 <.debug_aranges>:
+   0:	0000002c 	.inst	0x0000002c ; undefined
+   4:	00000002 	.inst	0x00000002 ; undefined
+   8:	00080000 	.inst	0x00080000 ; undefined
+   c:	00000000 	.inst	0x00000000 ; undefined
+  10:	40080000 	.inst	0x40080000 ; undefined
+  14:	00000000 	.inst	0x00000000 ; undefined
+  18:	00000030 	.inst	0x00000030 ; undefined
+	...
+
+Disassembly of section .debug_str:
+
+0000000000000000 <.debug_str>:
+   0:	6e69616d 	rsubhn2	v13.8h, v11.4s, v9.4s
+   4:	2f00732e 	.inst	0x2f00732e ; undefined
+   8:	2f746e6d 	.inst	0x2f746e6d ; undefined
+   c:	73552f63 	.inst	0x73552f63 ; undefined
+  10:	2f737265 	fcmla	v5.4h, v19.4h, v19.h[1], #270
+  14:	2069734d 	.inst	0x2069734d ; undefined
+  18:	35364647 	cbnz	w7, 6c8e0 <end-0x40013740>
+  1c:	636f442f 	.inst	0x636f442f ; undefined
+  20:	6e656d75 	umin	v21.8h, v11.8h, v5.8h
+  24:	462f7374 	.inst	0x462f7374 ; undefined
+  28:	46414d41 	.inst	0x46414d41 ; undefined
+  2c:	67724f2f 	.inst	0x67724f2f ; undefined
+  30:	706d6f43 	adr	x3, dae1b <end-0x3ffa5205>
+  34:	6a652f75 	bics	w21, w27, w5, lsr #11
+  38:	4e470037 	.inst	0x4e470037 ; undefined
+  3c:	53412055 	.inst	0x53412055 ; undefined
+  40:	332e3220 	.inst	0x332e3220 ; undefined
+  44:	Address 0x0000000000000044 is out of bounds.
+
