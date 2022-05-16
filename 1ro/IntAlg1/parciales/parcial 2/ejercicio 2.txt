@@ -1,0 +1,7 @@
+-- Nombre y Apellido: Lautaro Ebner
+-- DNI: 43694206
+
+<Ai: (0<=i<N-1) ∧ (0<= i <#xs-1): (xs!!i)<=(xs!!(i+1))>
+
+
+

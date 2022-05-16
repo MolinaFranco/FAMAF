@@ -1,0 +1,110 @@
+
+-- 1) a)
+
+p => (q=>r) === ¬r => (p=> ¬q)
+{caracterizacion del implica x2}
+p => (¬q ∨ r) === ¬r => (¬p ∨ ¬q)
+{caracterizacion del implica x2}
+¬p ∨ (¬q ∨ r) === ¬¬r ∨ (¬p ∨ ¬q)
+{doble negacion}
+¬p ∨ (¬q ∨ r) === r ∨ (¬p ∨ ¬q)
+{Asociatividad disyuncion}
+r ∨ (¬p ∨ ¬q) === r ∨ (¬p ∨ ¬q)
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 1) b) 
+
+¬p ∧ q === ¬(p ∧ ¬q === q) === (p === False)
+
+-- ¬p === ¬p ∧ q
+¬p === ¬p ∧ q
+{doble negacion}
+¬p === ¬p ∧ ¬(¬q)
+
+¬p === ¬(p ∨ ¬q)
+
+-- ¬p === ¬(p ∧ ¬q === q)   
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 2) a) Todas las figuras de xs son triangulos rojos o cuadrados
+<Ax: (x e xs) ∧ (figura.x) : (triangulo.x ∧ rojo.x)  cuadrado.x>
+
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 2) b) Existe un unico elemento de xs que es mayor estricto que cero
+<Ei: 0<=i<#xs: xs!!i>0 ∧ <Aj: (0<=j<#xs) ∧ j!=x: xs!!j<=0> >
+
+xs [(triangulo, verde, 2), 1]
+
+xs = [figuras]
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+[(cuadrado, azul, 10), (triangulo, amarillo, 11)]
+
+[(cuadrado, azul, 12), (triangulo, amarillo, 11)]
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 4)
+
+<Ax: r.x: t.x> ∧ <Ax: ¬t.x: r.x> === <Ax: : t.x>
+{Intercambio entre rango y termino}
+<Ax: : r.x => t.x> ∧ <Ax: : ¬t.x => r.x> === <Ax: : t.x>
+{Regla de termino}
+<Ax: : (r.x => t.x) ∧ (¬t.x => r.x)> === <Ax: : t.x>
+{caracterizacion del implica}
+<Ax: : (¬r.x ∨ t.x) ∧ (¬¬t.x ∨ r.x)> === <Ax: : t.x>
+{doble negacion y acomodar}
+<Ax: : (¬r.x ∨ t.x) ∧ (r.x ∨ t.x)> === <Ax: : t.x>
+{Distributividad de la disyuncion con la conjuncion}
+<Ax: : t.x ∨ (¬r.x ∧ r.x)> === <Ax: : t.x>
+{ Principio de no contradiccion:}
+<Ax: : t.x ∨ False> === <Ax: : t.x>
+{Definicion de False y acomodar}
+<Ax: : ¬True ∨ t.x> === <Ax: : t.x>
+{caracterizacion del implica}
+<Ax: : True => t.x> === <Ax: : t.x>
+{Intercambio entre rango y termino}
+<Ax: True: t.x> === <Ax: : t.x>
+{Rango True}
+<Ax: : t.x> === <Ax: : t.x>
+
+
+
+-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+-- 5)
+
+
+todosRoC : [Figura] → Bool                              
+todosRoC.[ ] = True                                     1
+todosRoC.(x.xs) = (rojo.x ∨ circulo.x) ∧ todosRoC.xs    2
+
+e: A ->[A] -> Bool
+y e [] = False                     3
+y e (x:xs) = (y==x) ∨ (y e xs)      4
+
+HI = todosRoC.xs ≡ <Ay: (y e xs): rojo.y ∨ circulo.y>
+HI = todosRoC.xs ≡ <Ay: x e xs: rojo.x ∨ circulo.x>
+
+
+CASO BASE:
+todosRoC.[] === <Ay: y e []: rojo.y ∨ circulo.y> 
+True === <Ay: False: rojo.y ∨ circulo.y> 
+True === True
+-- se cumple el caso base
+
+CASO INDUCTIVO:
+todosRoC.(x:xs) ≡ <Ay: y e (x:xs): rojo.y ∨ circulo.y>
+{2 y 4}
+(rojo.x ∨ circulo.x) ∧ todosRoC.xs === <Ay: (y=x) ∨ (y e xs): rojo.y ∨ circulo.y>
+{T1}
+(rojo.x ∨ circulo.x) ∧ todosRoC.xs === <Ay: (y=x): rojo.y ∨ circulo.y> ∧ <Ay: (y e xs): rojo.y ∨ circulo.y>
+{Rango unitario y HI}
+(rojo.x ∨ circulo.x) ∧ todosRoC.xs === (rojo.x ∨ circulo.x) ∧ todosRoC.xs
+{Reflexividad del igual}
+

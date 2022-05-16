@@ -1,0 +1,13 @@
+DOCKER=1
+
+DB_PASSWORD=example
+
+SECRET_KEY=2tv)*bw5y+z(hyd8oyamv*v=uz2f-f$1ucr)nnc#w_z*u))-#l
+
+DEBUG=True
+
+AWS_ACCESS_KEY_ID=AKIAZG5EU7PYW4SNQ2QX
+
+AWS_SECRET_ACCESS_KEY=G5IjtYiW6F6XurgVsJ8U0Fu1Sfq50Jn7w43pdpEo
+
+DEFAULT_FROM_EMAIL=no-reply@bvagro.com.ar

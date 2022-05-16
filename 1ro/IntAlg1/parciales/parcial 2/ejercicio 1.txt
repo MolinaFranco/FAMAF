@@ -1,0 +1,37 @@
+-- Nombre y Apellido: Lautaro Ebner
+-- DNI: 43694206
+
+-- 1) b)
+_(p ∨ q === p)_ === ¬(p ∧ ¬q === q) === p ∨ False
+{conmutatividad}
+_(q ∨ p === p)_ === ¬(p ∧ ¬q === q) === p ∨ False
+{Definicion de implicacion}
+(q => p) === _¬(p ∧ ¬q === q)_ === p ∨ False
+{Definicion de negacion}
+(q => p) === (_¬(p ∧ ¬q)_ === q) === p ∨ False
+{De morgan para la conjuncion}
+(q => p) === (¬p ∨ _¬¬q_ === q) === p ∨ False
+{Doble negacion}
+(q => p) === (¬p ∨ q === q) === _p ∨ False_
+{Elemento neutro de la disyuncion}
+(q => p) === (_¬p ∨ q === q_) === p
+{Definicion de implicacion}
+_q => p_ === _¬p => q_ === p
+{Caracterizacion de la implicacion}
+¬q ∨ p === _¬¬p_ ∨ q === p
+{Doble negacion }
+_(_¬q ∨ p_ === p ∨ q === p)_
+{conmutatividad x2}
+p ∨ q === p ∨ ¬q === p
+{Teorema *}
+True
+    
+
+
+
+
+
+
+
+
+
