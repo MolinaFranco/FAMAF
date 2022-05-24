@@ -3,11 +3,16 @@
 
 char *string_clone(const char *str, size_t length) {
     char clone[length + 1];
-    char *output=clone;
+    char *output=malloc(length + 1);
     for (size_t i=0; i<length; i++) {
         clone[i] = str[i];
     }
     clone[length] = '\0';
+
+    for(unsigned int i=0; i<length; i++) {
+        output[i] = clone[i];
+    }
+    
     return output;
 }
 

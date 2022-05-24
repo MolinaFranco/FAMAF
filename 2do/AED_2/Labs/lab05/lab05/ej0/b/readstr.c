@@ -8,7 +8,12 @@ int main(void) {
     char user_input[MAX_LENGTH];
 
     printf("Ingrese su nombre y apellido: ");
-    scanf("%s", user_input);
+    // scanf("%s", user_input);
+    fgets(user_input, MAX_LENGTH, stdin);
+
+    size_t l = strlen(user_input) ;
+
+    user_input[l-1] = '\0';
 
     printf("Te damos la bienvenida %s a este maravilloso programa!\n", user_input);
 
