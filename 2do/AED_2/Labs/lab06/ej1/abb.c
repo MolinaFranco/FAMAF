@@ -98,31 +98,44 @@ struct _s_abb *pabb_max(abb tree) {
     return p;
 }
 
+struct _s_abb *padreabb_max(abb tree) {
+    struct _s_abb *p = tree;
+    while(p->rgt->rgt!=NULL){
+        p = p->rgt;
+    }
+    return p;
+}
+
 abb abb_remove(abb tree, abb_elem e) {
     assert(invrep(tree));
     if(abb_exists(tree, e)){
         struct _s_abb *pelim = tree;
+        struct _s_abb *padre;
         while(pelim->elem!=e){                 //busco el elemento a elimiar
             if(elem_less(e,pelim->elem)){
+                padre = pelim;
                 pelim = pelim->lft;
             }else{
+                padre = pelim;
                 pelim = pelim->rgt;
             }
         }
 
+        if(pelim->lft==NULL){
+
+        }
+
         //busco el maximo elemento de la rama de la izquierda para remplazar
-        struct _s_abb *maxmin = pabb_max(pelim->lft);
-        //hago copias para no editar los datos
-        struct _s_abb *cmaxmin = maxmin;
-        struct _s_abb *cpe = pelim;     //hago una copia para luego hacer free
+        struct _s_abb *padremaxmin = pabb_max(pelim->lft);
+        
+        struct _s_abb *elim = padremaxmin->rgt;     
 
-        pelim = cmaxmin;          // cambio el elemnto por el max de los min
-        maxmin = maxmin->lft;     // cambio el que maxmin por el siguiente menor
-        pelim->lft = cpe->lft;
-        pelim->rgt = cpe->rgt;
-        free(cpe);                // libero el elemento
+        pelim->elem = padremaxmin->rgt->elem;         
+        padremaxmin->rgt = padremaxmin->rgt->lft;
 
-        // assert(invrep(tree) && !abb_exists(tree, e));
+        free(elim);                // libero el elemento
+
+        assert(invrep(tree) && !abb_exists(tree, e));
     }
     return tree;
 }
