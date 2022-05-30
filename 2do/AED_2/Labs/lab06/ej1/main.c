@@ -70,35 +70,84 @@ int main(int argc, char *argv[]) {
 
     /*dumping the tree*/
     abb_dump(tree);
+
+
     if (!abb_is_empty(tree)) {
         printf("\n");
-        printf("raiz: %d\n minimo: %d\n maximo: %d\n", abb_root(tree),
-                                                       abb_min(tree),
-                                                       abb_max(tree));
+        printf("raiz: %d\n", abb_root(tree));
+        printf("minimo: %d\n", abb_min(tree));
+        printf("maximo: %d\n", abb_max(tree));
+                                                
     } else {
         printf("\nÁrbol vacío\n");
     }
 
     tree = abb_destroy(tree);
-    /*
-     * Modificar e implementar con un ciclo una interfaz que permita al usuario
-     * realizar una de las siguientes operaciones en cada iteración:
-     *
-     * 1 ........ Mostrar árbol por pantalla
-     * 2 ........ Agregar un elemento
-     * 3 ........ Eliminar un elemento
-     * 4 ........ Chequear existencia de elemento
-     * 5 ........ Mostrar longitud del árbol
-     * 6 ........ Mostrar raiz, máximo y mínimo del árbol
-     * 7 ........ Salir
-     *
-     * Se debe solicitar un número de entrada para realizar una de las acciones.
-     *
-     * Para las opciones 2, 3 y 4 se le deberá pedir al usuario que ingrese el
-     * elemento a agregar, eliminar o chequear respectivamente.
-     *
-     * Al salir debe liberarse toda la memoria utilizada.
-     *
-     */
+
+    abb programtree = abb_empty();
+
+    bool run=true;
+    int op;
+
+    while(run){
+        printf("-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_\n");
+        printf("1 ........ Mostrar árbol por pantalla\n");
+        printf("2 ........ Agregar un elemento\n");
+        printf("3 ........ Eliminar un elemento\n");
+        printf("4 ........ Chequear existencia de elemento\n");
+        printf("5 ........ Mostrar longitud del árbol\n");
+        printf("6 ........ Mostrar raiz, máximo y mínimo del árbol\n");
+        printf("7 ........ Salir\n");
+        printf("Seleccione una opcion: ");
+        scanf("%d", &op);
+        int elem;
+        switch(op)
+        {
+        case 1:
+            printf("\n");
+            abb_dump(programtree);
+            printf("\n");
+            break;
+
+        case 2:
+            printf("Ingrese el elemento que quiere agregar: ");
+            scanf("%d", &elem);
+            programtree = abb_add(programtree, elem);
+            break;
+
+        case 3:
+            printf("Ingrese el elemento que quiere eliminar: ");
+            scanf("%d", &elem);
+            programtree = abb_remove(programtree, elem);
+            break;
+
+        case 4:
+            printf("Ingrese el elemento que quiere comprobar: ");
+            scanf("%d", &elem);
+            if(abb_exists(programtree, elem)){
+                printf("Si existe \n");
+            }else{
+                printf("No existe \n");
+            }
+            break;
+
+        case 5:
+            printf("La longitud del arbol es de: %d \n", abb_length(programtree));
+            break;
+
+        case 6:
+            printf("Raiz: %d \nMáximo: %d \nMínimo: %d \n",abb_root(programtree), abb_max(programtree), abb_min(programtree));
+            break;
+
+        case 7:
+            run = false;
+            programtree = abb_destroy(programtree);
+            break;
+
+        default:
+            printf("Error! opcion invalida");
+        }
+    }
+
     return (EXIT_SUCCESS);
 }
