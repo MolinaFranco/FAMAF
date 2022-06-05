@@ -1,0 +1,1 @@
+tar -czvf empaquetado.tar.gz /carpeta/a/empaquetar/ 

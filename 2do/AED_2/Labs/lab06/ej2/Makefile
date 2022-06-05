@@ -13,7 +13,7 @@ all: clean reader.output
 	$(CC) $(CFLAGS) *.o -o $(TARGET) 
 
 valgrind:
-	$(VALGRIND) ./$(TARGET) 10
+	$(VALGRIND) ./$(TARGET) $(EXAMPLE) 10
 
 run:
 	./$(TARGET) $(EXAMPLE)

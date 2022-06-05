@@ -1,6 +1,10 @@
 #include <assert.h>
 #include "dict.h"
 #include "key_value.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "string.h"
 
 struct _node_t {
     dict_t left;
@@ -10,17 +14,17 @@ struct _node_t {
 };
 
 static bool invrep(dict_t d) {
-    return  (d == NULL) || (d->lft==NULL && d->rgt == NULL) ||              // arbol nulo  
-            (   (d->lft == NULL || string_less(d->lft->elem, d->elem)) &&     // arbol no nulo
-                (d->rgt  == NULL || string_less(d->elem, d->rgt->elem)) &&
-                invrep(d->rgt) &&
-                invrep(d->lft)
+    return  (d == NULL) || (d->left==NULL && d->right == NULL) ||              // arbol nulo  
+            (   (d->left == NULL || string_less(d->left->key, d->key)) &&     // arbol no nulo
+                (d->right  == NULL || string_less(d->key, d->right->key)) &&
+                invrep(d->right) &&
+                invrep(d->left)
             );
     
 }
 
 //implementacion para ultimos nodos
-static struct _node_t *last_node(key_ty key, value_t value) {
+static struct _node_t *last_node(key_t key, value_t value) {
   struct _node_t *node = malloc(sizeof(struct _node_t));
   node->key = key;
   node->value = value;
@@ -35,13 +39,13 @@ dict_t dict_empty(void) {
 }
 
 dict_t dict_add(dict_t dict, key_t word, value_t def) {
-    assert(invrep(tree));
-    assert(!dict_exists(tree, word));
+    assert(invrep(dict));
+    assert(!dict_exists(dict, word));
     
     if(dict == NULL) {
         dict = last_node(word, def);
     }
-    else if(string_less(word, dict->elem)) {
+    else if(string_less(word, dict->key)) {
         dict->left = dict_add(dict->left, word, def);
     }
     else if(string_less(dict->key, word)){
@@ -53,7 +57,7 @@ dict_t dict_add(dict_t dict, key_t word, value_t def) {
         string_destroy(tmp);
     }
 
-    assert(invrep(dict) && abb_exists(dict, word));
+    assert(invrep(dict) && dict_exists(dict, word));
     return dict;
 }
 
@@ -74,6 +78,10 @@ value_t dict_search(dict_t dict, key_t word) {
     }
 
     return def;
+}
+
+bool dict_is_empty(dict_t dict) {
+    return dict == NULL;
 }
 
 bool dict_exists(dict_t dict, key_t word) {
@@ -100,13 +108,63 @@ unsigned int dict_length(dict_t dict) {
         length = 1 + dict_length(dict->left) + dict_length(dict->right);
     }
 
-    assert(invrep(tree) && (dict_is_empty(tree) || length > 0));
+    assert(invrep(dict) && (dict_is_empty(dict) || length > 0));
     return length;
 }
 
-dict_t dict_remove(dict_t dict, key_t word) {
-    /* needs implementation */
-    return dict;
+key_t dict_min(dict_t dict) {
+    key_t min_k;
+    assert(invrep(dict));
+    
+    struct _node_t *p = dict;
+    while(p->left!=NULL){
+        p = p->left;
+    }
+    min_k = p->key;
+
+    assert(invrep(dict) && dict_exists(dict, min_k));
+    return min_k;
+}
+
+dict_t dict_remove(dict_t dict, key_t word){
+    assert(invrep(dict));
+    dict_t r = dict;
+    
+    // caso base
+    if (dict != NULL){
+
+        // key < dict
+        if (word < dict->key)
+            dict->left = dict_remove(dict->left, word);
+    
+        // key > dict
+        else if (word > dict->key)
+            dict->right = dict_remove(dict->right, word);
+    
+        // key = dict
+        // entonces es el nodo que quiero eliminar
+
+        else {
+            // un hijo o sin hijo
+            if (dict->left == NULL) {
+                r = dict->right;
+                free(dict);
+                dict = NULL;
+            }
+            else if (dict->right == NULL) {
+                r = dict->left;
+                free(dict);
+                dict = NULL;
+            }else{    // dos hijos
+                key_t temp = dict_min(dict->right);
+                dict->key = temp;
+                dict->right = dict_remove(dict->right, temp);
+                r = dict;
+            }
+        }
+    }    
+    assert(invrep(r) && !dict_exists(r,word));
+    return r;
 }
 
 dict_t dict_remove_all(dict_t dict) {
@@ -129,6 +187,15 @@ void dict_dump(dict_t dict, FILE *file) {
         dict_dump(dict->left, file);
         fprintf(file, "%s: %s\n", string_ref(dict->key), string_ref(dict->value));
         dict_dump(dict->right, file);
+    }
+}
+
+void dict_print(dict_t dict) {
+    assert(invrep(dict));
+    if (dict != NULL) {
+        dict_print(dict->left);
+        printf("%s: %s\n", string_ref(dict->key), string_ref(dict->value));
+        dict_print(dict->right);
     }
 }
 

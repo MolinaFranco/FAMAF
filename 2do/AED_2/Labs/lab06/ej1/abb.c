@@ -106,40 +106,80 @@ struct _s_abb *padreabb_max(abb tree) {
     return p;
 }
 
-abb abb_remove(abb tree, abb_elem e) {
+// abb abb_remove(abb tree, abb_elem e) {
+//     assert(invrep(tree));
+//     if(abb_exists(tree, e)){
+//         struct _s_abb *pelim = tree;
+//         struct _s_abb *padre;
+//         while(pelim->elem!=e){                 //busco el elemento a elimiar
+//             if(elem_less(e,pelim->elem)){
+//                 padre = pelim;
+//                 pelim = pelim->lft;
+//             }else{
+//                 padre = pelim;
+//                 pelim = pelim->rgt;
+//             }
+//         }
+
+//         if(pelim->lft==NULL){
+
+//         }
+
+//         //busco el maximo elemento de la rama de la izquierda para remplazar
+//         struct _s_abb *padremaxmin = pabb_max(pelim->lft);
+        
+//         struct _s_abb *elim = padremaxmin->rgt;     
+
+//         pelim->elem = padremaxmin->rgt->elem;         
+//         padremaxmin->rgt = padremaxmin->rgt->lft;
+
+//         free(elim);                // libero el elemento
+
+//         assert(invrep(tree) && !abb_exists(tree, e));
+//     }
+//     return tree;
+// }
+
+abb abb_remove(abb tree, abb_elem e){
     assert(invrep(tree));
-    if(abb_exists(tree, e)){
-        struct _s_abb *pelim = tree;
-        struct _s_abb *padre;
-        while(pelim->elem!=e){                 //busco el elemento a elimiar
-            if(elem_less(e,pelim->elem)){
-                padre = pelim;
-                pelim = pelim->lft;
-            }else{
-                padre = pelim;
-                pelim = pelim->rgt;
+    abb r = tree;
+    
+    // caso base
+    if (tree != NULL){
+
+        // key < tree
+        if (e < tree->elem)
+            tree->lft = abb_remove(tree->lft, e);
+    
+        // key > tree
+        else if (e > tree->elem)
+            tree->rgt = abb_remove(tree->rgt, e);
+    
+        // key = tree
+        // entonces es el nodo que quiero eliminar
+
+        else {
+            // un hijo o sin hijo
+            if (tree->lft == NULL) {
+                r = tree->rgt;
+                free(tree);
+                tree = NULL;
+            }
+            else if (tree->rgt == NULL) {
+                r = tree->lft;
+                free(tree);
+                tree = NULL;
+            }else{    // dos hijos
+                abb_elem temp = abb_min(tree->rgt);
+                tree->elem = temp;
+                tree->rgt = abb_remove(tree->rgt, temp);
+                r = tree;
             }
         }
-
-        if(pelim->lft==NULL){
-
-        }
-
-        //busco el maximo elemento de la rama de la izquierda para remplazar
-        struct _s_abb *padremaxmin = pabb_max(pelim->lft);
-        
-        struct _s_abb *elim = padremaxmin->rgt;     
-
-        pelim->elem = padremaxmin->rgt->elem;         
-        padremaxmin->rgt = padremaxmin->rgt->lft;
-
-        free(elim);                // libero el elemento
-
-        assert(invrep(tree) && !abb_exists(tree, e));
-    }
-    return tree;
+    }    
+    assert(invrep(r) && !abb_exists(r,e));
+    return r;
 }
-
 
 abb_elem abb_root(abb tree) {
     abb_elem root;
