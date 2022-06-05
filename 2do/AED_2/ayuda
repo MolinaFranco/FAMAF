@@ -4,3 +4,11 @@ $ ./mysort ../input/atpplayers.in
 
 $ ./mysort ../input/atpplayers.in > atpplayers.out
 $ diff ../input/atpplayers.in atpplayers.out
+
+gdb --args ./pstack_test input/example_a.in
+n   next
+b   breackpoint
+s   step (para que entre adentro de la funcion)
+
+print
+ptype 
