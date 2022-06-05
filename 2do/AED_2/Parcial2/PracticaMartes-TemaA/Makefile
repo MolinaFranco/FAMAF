@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -pedantic -std=c99 -g
-SOURCES = pstack.c main.c
+SOURCES = pqueue.c main.c
 OBJECTS = $(SOURCES:.c=.o)
-TARGET = pstack_test
-INPUTS = input/example_a.in
+TARGET = dispatch_patients
+INPUTS = input/hospital_ordered.in
 VALGRIND = valgrind --leak-check=full -s
 
 .PHONY: clean

@@ -10,7 +10,7 @@ struct s_pstack {
 
 struct s_node {
     pstack_elem elem;
-    priority_t prio;
+    unsigned int prio;
     struct s_node *next;
 };
 
@@ -72,14 +72,14 @@ pstack pstack_push(pstack s, pstack_elem e, priority_t priority) {
         new_node->next = s->first;
         s->first = new_node;
     }else{
-        struct s_node *f = s->first;
-        struct s_node *s = f->next;
-        while (s!=NULL && s->prio>new_node->prio){
-            f = s;
-            s = s->next;
+        struct s_node *fi = s->first;
+        struct s_node *se = fi->next;
+        while (se!=NULL && se->prio>new_node->prio){
+            fi = se;
+            se = se->next;
         }
-        f->next = new_node;
-        new_node->next = s;
+        fi->next = new_node;
+        new_node->next = se;
     }
     ++s->size;
     return s;
