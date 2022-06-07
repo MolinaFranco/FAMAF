@@ -132,11 +132,11 @@ dict_t dict_remove(dict_t dict, key_t word){
     if (dict != NULL){
 
         // key < dict
-        if (word < dict->key)
+        if (key_less(word, dict->key))
             dict->left = dict_remove(dict->left, word);
     
         // key > dict
-        else if (word > dict->key)
+        else if (key_less(dict->key, word))
             dict->right = dict_remove(dict->right, word);
     
         // key = dict
