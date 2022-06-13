@@ -41,29 +41,26 @@ horasInter = np.array([x for x in range(1, 24) if x not in horas])
 splLng = interp1d(horas, longitud, kind="cubic")      # spline 
 lagLng = plagrange(horas, longitud)     # polinomio con lagrange
 
-fig, ax = plt.subplots()                # figuras y ejes de un sub grafico para tener longitud y latitud en el mismo
-fig.suptitle("Longitud")
+fig, (ax,ax2) = plt.subplots(2)                # figuras y ejes de un sub grafico para poder hacer dos en el mismo codigo
 ax.plot(horas, longitud, "o", label="Datos Longitud")
-ax.plot(horasInter, splLng(horasInter), "o", label="Inter spline")
-ax.plot(horasInter, lagLng(horasInter), "o", label="Inter Lagrange")
+ax.plot(horasInter, splLng(horasInter), label="Inter spline")
+ax.plot(horasInter, lagLng(horasInter), label="Inter Lagrange")
 
 ax.legend()
 ax.grid()
-fig.savefig("graficos/DatosIrmaEj1bLongitud.png")
+
 
 # Interpolando Latitud
 
 splLng = interp1d(horas, latitud, kind="cubic")      # spline 
 lagLng = plagrange(horas, latitud)     # polinomio con lagrange
 
-fig2, ax2 = plt.subplots()                # figuras y ejes de un sub grafico para tener longitud y latitud en el mismo
-fig2.suptitle("Latitud")
 ax2.plot(horas, latitud, "o", label="Datos Latitud")
-ax2.plot(horasInter, splLng(horasInter), "o", label="Inter spline")
-ax2.plot(horasInter, lagLng(horasInter), "o", label="Inter Lagrange")
+ax2.plot(horasInter, splLng(horasInter), label="Inter spline")
+ax2.plot(horasInter, lagLng(horasInter), label="Inter Lagrange")
 
 ax2.legend()
-
 ax2.grid()
-fig2.savefig("graficos/DatosIrmaEj1bLatitud.png")
+
+fig.savefig("graficos/DatosIrmaEj1b.png")
 

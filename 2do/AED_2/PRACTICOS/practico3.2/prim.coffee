@@ -22,7 +22,7 @@ fun Prim(G : Graph, k: Vertex) ret A: Set of Arista
     A:= empty_set()
     
     do (not is_empty_set(V)) →
-        t := “selecciono arista de costo mínimo tal que c.v1 ∈ C y c.v2 6∈C, ó c.v2 ∈ C y c.v1 6∈ C”
+        t := “selecciono arista de costo mínimo tal que c.v1 ∈ C y c.v2 !∈C, ó c.v2 ∈ C y c.v1 !∈ C”
         
         if member(t.v1,T)then 
             elim(T,t.v1)
