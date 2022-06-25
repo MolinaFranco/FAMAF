@@ -1,0 +1,7 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/mnt/c/Users/Msi GF65/Documents/FAMAF/2do/AED_2/Labs'
+ 
+make: Leaving directory '/mnt/c/Users/Msi GF65/Documents/FAMAF/2do/AED_2/Labs'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
