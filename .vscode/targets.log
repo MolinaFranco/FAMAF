@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jun 25 19:46:40 2022
+# Make data base, printed on Sat Jun 25 23:13:53 2022
 
 # Variables
 
@@ -19,7 +19,7 @@ make: *** No rule to make target 'all'.  Stop.
 # environment
 VIRTUALENVWRAPPER_PROJECT_FILENAME = .project
 # environment
-WSLENV = VSCODE_WSL_EXT_LOCATION/up
+WSLENV = VSCODE_WSL_EXT_LOCATION/up:VSCODE_SERVER_TAR/up
 # default
 .SHELLFLAGS := -c
 # environment
@@ -43,7 +43,7 @@ VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
 PROMPT_DIRTRIM = 2
 # environment
-_ = /home/molina/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/node
+_ = /home/molina/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/node
 # makefile
 MAKEFILE_LIST := 
 # 'override' directive
@@ -59,7 +59,7 @@ VSCODE_CWD = /mnt/c/Users/Msi GF65/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/molina/.vscode-server/bin/4af164ea3a06f701fe3e89a2bcbb421d2026b68f/bin/remote-cli:/home/molina/.local/bin:/home/molina/.nvm/versions/node/v16.5.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/Msi GF65/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Msi GF65/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Msi GF65/AppData/Local/Microsoft/WindowsApps:/snap/bin
+PATH = /home/molina/.vscode-server/bin/30d9c6cd9483b2cc586687151bcbcd635f373630/bin/remote-cli:/home/molina/.local/bin:/home/molina/.nvm/versions/node/v16.5.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/Msi GF65/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Msi GF65/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Msi GF65/AppData/Local/Microsoft/WindowsApps:/snap/bin
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
@@ -69,7 +69,9 @@ VIRTUALENVWRAPPER_PYTHON = /usr/bin/python3
 # environment
 VSCODE_LOG_STACK = false
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-f3e6a2c5-8082-4e5b-ba94-88d2de8be3f5.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-e462be18-3a09-4944-a0ff-b2a0f332546c.sock
+# environment
+VSCODE_SERVER_TAR = /mnt/c/Users/MSIGF6~1/AppData/Local/Temp/vscode-remote-wsl/30d9c6cd9483b2cc586687151bcbcd635f373630/vscode-server-stable-linux-x64.tar.gz
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -87,7 +89,7 @@ PWD = /mnt/c/Users/Msi GF65/Documents/FAMAF
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/11702_interop
+WSL_INTEROP = /run/WSL/4352_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -174,8 +176,6 @@ TERM = xterm-256color
 VSCODE_EXTHOST_WILL_SEND_SOCKET = true
 # environment
 WSL_DISTRO_NAME = Ubuntu
-# environment
-MOTD_SHOWN = update-motd
 # variable set hash-table stats:
 # Load=82/1024=8%, Rehash=0, Collisions=5/104=5%
 
@@ -243,6 +243,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Sat Jun 25 19:46:40 2022
+# Finished Make data base on Sat Jun 25 23:13:53 2022
 
  
