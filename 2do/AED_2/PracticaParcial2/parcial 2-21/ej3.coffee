@@ -6,7 +6,7 @@ medidas n
 mejora  m[i] > 0
 daño    d[i] > 0
 puntaje = m[i]/d[i]
-
+                                                                                                                            for     
 medidas(c,k,i) =    | 0                                                                 ((k=0 or c=0) and 1<=i<=n)          1     
                     | -♾️                                                               ((i=0 and k>0 and c>0)              2
                     |
@@ -16,16 +16,35 @@ medidas(c,k,i) =    | 0                                                         
 
                                                         <>
 
-fun medidas(M: array[1..n]Nat, D: array[1..n]Nat, N:Nat) ret puntaje : Nat
+fun medidas(m: array[1..n]Nat, d: array[1..n]Nat, C:Nat, K:Nat) ret puntaje : Nat
 
-
-    m : array[0..n] of Nat
-
-    m[0] := 0
+                k   c   i
+    M : array[0..n,0..n,0..n] of Nat
 
     for i:=1 to n do
-        m[i] := max(    m[i]/d[i])
+        m[0,0,i] := 0
+
+    for k:=1 to n do
+        for c:=1 to n do
+            M[k,c,0] := -♾️
+        od
+    od
+
+    for k:=1 to n do
+        for c:=1 to n do
+            for i:=1 to n do
+
+                if(c>=d[i])then
+                    M[k,c,i] := max(medidas(c-d[i], k-1, i-1)+m[i]/d[i] , medidas(c, k, i-1))
+                else
+                    M[k,c,i] := medidas(c, k, i-1)
+
+                fi
+    	    od
+        od
+    od
+
+    puntaje := m[C,K,n]
 
 
-    
-    for i:=0 to n do
+
