@@ -69,9 +69,9 @@ def ej2(ab):
 
     xs = np.linspace(0, 1, 50)
     
-    ys = func2a(xs)
+    ys = fun2a(xs)
     if(ab == "b"):
-        ys = func2b(xs)
+        ys = fun2b(xs)
 
     #ys = ys + randn(len(y))
 

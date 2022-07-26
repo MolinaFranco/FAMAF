@@ -79,6 +79,85 @@ def pnewton(xs,ys):
     return p
 
 def inewton(xs, ys, z):
+    '''
+    Recibe una lista de nodos, sus imagenes y una lista de valores a evaluar por el polinomio.
+    z tiene que ser un ndarray
+    '''
     return pnewton(xs, ys)(z)
 
 print(inewton([1,2,3],[3,6,9],3))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+de willi
+
+def pnewton(xs, ys):
+    cnodos = len(xs)
+
+    def ddivididas(i, j):
+        assert(i <= j)
+        if(i == j):
+            return ys[i]
+        return (ddivididas(i+1, j)-ddivididas(i, j-1))/(xs[j]-xs[i])
+
+    def prod_raro(i, x):
+        r = 1
+        for j in range(0, i):
+            r *= (x-xs[j])
+        return r
+
+    def p(x):
+        sum = 0
+        for i in range(0, cnodos):
+            c = ddivididas(0, i)
+            sum += c*prod_raro(i, x)
+        return sum
+
+    return p
+
+
+
+def pnewtonprim(xs, ys):
+    cnodos = len(xs)
+
+    def ddivididas(i, j):
+        assert(i <= j)
+        if(i == j):
+            return ys[i]
+        return (ddivididas(i+1, j)-ddivididas(i, j-1))/(xs[j]-xs[i])
+
+    def prod_raro(i, x):
+        r = 1
+        for j in range(0, i):
+            r *= (x-xs[j])
+        return r
+
+    def prod_raro_prim(i, x):
+        r = 1
+        if(i == 0):
+            r = 0
+        else:
+            r = prod_raro_prim(i-1, x)*(x-xs[i-1]) + prod_raro(i-1, x)
+        return r
+        
+
+    def p(x):
+        sum = 0
+        for i in range(0, cnodos):
+            c = ddivididas(0, i)
+            sum += c*prod_raro_prim(i, x)
+        return sum
+
+    return p

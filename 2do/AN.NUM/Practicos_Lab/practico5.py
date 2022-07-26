@@ -105,4 +105,33 @@ def ej5():
     def f(x): x**2*np.log(x+np.sqrt(x**2+1))
     print(f"b: {quad(f, 0, 2)}")
 
-#  6)
+# 6
+def pendulo(l, angDeg):
+    angRad = angDeg*np.pi/180
+    def aux(x):
+        return 1/(1 - np.sin(angRad/2)**2 * np.sin(x)**2)
+    
+    integral, _ = quad(aux, 0, np.pi/2)
+    return 4*np.sqrt(l/9.8)*integral
+
+def S(f, a, b):
+    return (b-a)/6 * (f(a) + 4*f((a+b)/2) + f(b))
+
+# 7
+def quadadapt(f, I, tol):
+    a, b = I
+    c = (a+b)/2
+    q = S(f, a,b)
+    q1 = S(f, a,c)
+    q2 = S(f, c,b)
+    if q-q1-q2 < 15*tol:
+        return q1 + q2
+    else:
+        return quadadapt(f, (a,c), tol/2) + quadadapt(f, (c, b), tol/2)
+
+def f(x): return x * np.e**(-x**2)
+print(quadadapt(f, (0, 1), 1e-5))
+print(intenumcomp(f, 0, 1, 8, "simpson"))
+# print()
+
+plt.show()

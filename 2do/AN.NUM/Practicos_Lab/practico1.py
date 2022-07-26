@@ -2,6 +2,7 @@
 # encoding: utf-8.
 import random
 import math
+from math import isinf, sqrt
 
 # ayuda
 
@@ -43,6 +44,31 @@ def ej2():
     b = 1 + 2**-52; 
     print(b-1)
 
+def ej3():
+    # 3 Maxima y minima potencia de dos
+
+    exp = 0
+    acc = 1.0
+
+    while True:
+        if(isinf(acc)):
+            break
+        acc *= 2
+        exp += 1
+
+    print("Maxima potencia:", exp) # 1024
+
+    exp = 0
+    acc = 1.0
+
+    while True:
+        if(acc/2 == 0):
+            break
+        acc /= 2
+        exp -= 1
+
+    print("Minima potencia:", exp) # -1074
+
 def ej6():
     x = val("x")
     y = val("y")
@@ -68,6 +94,30 @@ def ej7():
     print(pot(x,5))
     return (0)
 
+def ej8(): 
+    def mala(a,b,c):
+    # usa bashkara
+    discr = sqrt(b**2-4*a*c)
+    x1 = (-b+discr)/(2*a)
+    x2 = (-b-discr)/(2*a)
+
+    return [x1, x2]
+
+    [x1, x2] = mala(1,5,6)
+
+
+    print(x1," ", x2)
+
+    def buena(a, b, c):
+    discr = sqrt(b**2-4*a*c)
+    x1 = (-b+discr)/(2*a)
+    x2 = c / (a*x1) 
+
+    return (x1, x2)
+
+    x1, x2 = buena(1,5,6)
+    print(x1, x2)
+
 
 def SonReciprocos(x,y):
     r = False
@@ -81,6 +131,23 @@ def horn(coef,x):
     for c in range(1,len(coef)):
         r = coef[c]+x*r
     return r
+
+def hornwillli(coefs, x):
+    # out = [None]*(len(coefs))
+
+    # Inicializamos en el coef mas grande        
+    out = coefs[0]
+    for i in range(1, len(coefs)):
+        # Multiplicamos la cuenta actual con x si el coeficiente actual no es el de grado 0
+        # Sino, solo hacemos la suma a0+...
+        if i == len(coefs)-1:
+            out = coefs[i]+out
+        else:
+            out = out*x+coefs[i]
+    return out
+
+
+print(horn([10,8,-6,2,-5,4,2],1)) # 15
 
 def ej9():
     coefs = [3,2,1]
