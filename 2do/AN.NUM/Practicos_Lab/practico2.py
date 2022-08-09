@@ -64,7 +64,7 @@ def fun_lab2ej2b(x):
 
 
 def rnewton(fun,x0,err,mit):
-    (ap,apd) = fun(x0)
+    (ap,apd) = fun(x0)  #es una funcion que te retorna tu f(x) y f'(x)
     hx = []
     hf = []
 
@@ -104,10 +104,10 @@ def ej4(a):
 
 #print(ej4(2))
 
-"partiendo de un punto inicial x0. La funci ́on debe llamarse
-"ripf”, y tener como entrada (fun,x0,err,mit) donde fun es una funci ́on que dado x
-"retorna φ(x), x0 es un punto en R, err es la tolerancia deseada del error y mit es el n ́umero
-"m ́aximo de iteraciones permitidas. El algoritmo debe finalizar en la k- ́esima iteraci ́on si"
+# "partiendo de un punto inicial x0. La funci ́on debe llamarse"
+# "ripf”, y tener como entrada (fun,x0,err,mit) donde fun es una funci ́on que dado x
+# "retorna φ(x), x0 es un punto en R, err es la tolerancia deseada del error y mit es el n ́umero
+# "m ́aximo de iteraciones permitidas. El algoritmo debe finalizar en la k- ́esima iteraci ́on si"
 
 def ripf(fun,x0,err,mit):
     hx = []

@@ -1,5 +1,6 @@
 import sys
 
+# modificacion del metodo de newton
 def rsteffensen(fun,x0,err,mit):
     #fun es una funcion 
     #x0 punto inicial
