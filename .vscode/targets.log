@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Aug  9 17:42:54 2022
+# Make data base, printed on Wed Aug 10 13:55:57 2022
 
 # Variables
 
@@ -65,7 +65,7 @@ VIRTUALENVWRAPPER_PYTHON = /usr/bin/python3
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-2e13257e-a1b1-4b56-95d3-cf134dd08fa4.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-3ed290fe-651d-42e6-841b-fb34d98c456b.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -75,13 +75,13 @@ VIRTUALENVWRAPPER_HOOK_DIR = /home/molina/.virtualenvs
 # automatic
 %F = $(notdir $%)
 # environment
-DISPLAY = 172.24.128.1:0
+DISPLAY = 172.20.224.1:0
 # environment
 PWD = /mnt/c/Users/Msi GF65/Documents/FAMAF
 # default
 .LOADED := 
 # environment
-WSL_INTEROP = /run/WSL/953_interop
+WSL_INTEROP = /run/WSL/11_interop
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
@@ -168,8 +168,10 @@ LANG = C
 TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=78/1024=8%, Rehash=0, Collisions=5/100=5%
+# Load=79/1024=8%, Rehash=0, Collisions=5/101=5%
 
 # Pattern-specific Variable Values
 
@@ -177,7 +179,7 @@ WSL_DISTRO_NAME = Ubuntu
 
 # Directories
 
-# . (device 46, inode 7036874417844583): 6 files, no impossibilities.
+# . (device 47, inode 7036874417844583): 6 files, no impossibilities.
 
 # 6 files, no impossibilities in 1 directories.
 
@@ -235,6 +237,6 @@ GNUmakefile:
 # strcache performance: lookups = 17 / hit rate = 17%
 # hash-table stats:
 # Load=14/8192=0%, Rehash=0, Collisions=1/17=6%
-# Finished Make data base on Tue Aug  9 17:42:54 2022
+# Finished Make data base on Wed Aug 10 13:55:57 2022
 
  
