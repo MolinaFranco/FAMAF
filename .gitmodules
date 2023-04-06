@@ -4,3 +4,6 @@
 [submodule "1ro-FAMAF"]
 	path = 1ro-FAMAF
 	url = https://github.com/MolinaFranco/1ro-FAMAF.git
+[submodule "3ro-Famaf"]
+	path = 3ro-Famaf
+	url = git@github.com:MolinaFranco/3ro-Famaf.git
