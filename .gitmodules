@@ -1,0 +1,6 @@
+[submodule "2do-Famaf"]
+	path = 2do-Famaf
+	url = https://github.com/MolinaFranco/2do-Famaf.git
+[submodule "1ro-FAMAF"]
+	path = 1ro-FAMAF
+	url = https://github.com/MolinaFranco/1ro-FAMAF.git

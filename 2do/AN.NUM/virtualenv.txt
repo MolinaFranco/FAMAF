@@ -1,5 +1,0 @@
-Set-ExecutionPolicy RemoteSigned
-
-crear => python -m venv venv
-
-para activar => .\venv\Scripts\activate
