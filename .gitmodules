@@ -7,3 +7,9 @@
 [submodule "3ro-Famaf"]
 	path = 3ro-Famaf
 	url = git@github.com:MolinaFranco/3ro-Famaf.git
+[submodule "5to-Famaf"]
+	path = 5to-Famaf
+	url = git@github.com:MolinaFranco/5to-Famaf.git
+[submodule "4to-Famaf"]
+	path = 4to-Famaf
+	url = git@github.com:MolinaFranco/4to-Famaf.git
